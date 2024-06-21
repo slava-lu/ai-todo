@@ -3,7 +3,7 @@ import TodoList from "@/modules/todo/components/TodoList";
 import TodoCreateNew from "@/modules/todo/components/TodoCreateNew";
 import SearchBar from "@/modules/todo/components/SearchBar";
 import { fetchTodoCount } from "@/modules/todo/todo-data";
-import AiTest from "@/modules/ai/components/aiTest";
+import AiCompletion from "@/modules/ai/components/AiCompletion";
 
 export default async function Home({
   searchParams,
@@ -18,7 +18,7 @@ export default async function Home({
       <h3 className="text-2xl font-semibold text-center my-4">
         {t("todo#list_title")}
       </h3>
-      <AiTest />
+      <AiCompletion />
       <SearchBar />
       <TodoList query={query} />
       <TodoCreateNew todoCount={todoCount} />
