@@ -1,19 +1,23 @@
 "use client";
 
-import { streamTextAction } from "@/modules/todo/todo-ai-action";
+import { streamTextAction } from "@/modules/todo/todo-actions";
 import { useState, useEffect } from "react";
 import { readStreamableValue } from "ai/rsc";
+import { useFormStatus } from "react-dom";
 
 export default function AiCompletion() {
   const [text, setText] = useState("");
+  const { pending, data } = useFormStatus();
   useEffect(() => {
-    const generateCompletion = async () => {
-      const result = await streamTextAction();
-      for await (const delta of readStreamableValue(result))
-        setText(delta ?? "");
+    console.log("data", data?.get("description"));
+    console.log("pending", pending);
+
+    const generateCompletion = async (prompt: string) => {
+      const result = await streamTextAction(prompt);
+      for await (const text of readStreamableValue(result)) setText(text ?? "");
     };
-    generateCompletion();
-  }, []);
+    pending && data && generateCompletion(data?.get("description") as string);
+  }, [pending]);
 
   return (
     <div>

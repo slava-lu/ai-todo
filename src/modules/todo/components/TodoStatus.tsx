@@ -20,11 +20,13 @@ export default function TodoStatus({
 
   return (
     <form action={dispatch}>
-      <ChangeStatusButton status={status} />
-      <div id="error" aria-live="polite" aria-atomic="true">
-        {state?.message && (
-          <p className="mt-2 text-sm text-red-500">{state.message}</p>
-        )}
+      <div className="flex items-center justify-center">
+        <ChangeStatusButton status={status} />
+        <div id="error" aria-live="polite" aria-atomic="true">
+          {state?.message && (
+            <p className="mt-2 text-sm text-red-500">{state.message}</p>
+          )}
+        </div>
       </div>
     </form>
   );

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import CreateNewButton from "./CreateNewButton";
 import { maxTodoItems } from "@/lib/consts";
+import AiCompletion from "@/modules/ai/components/AiCompletion";
 
 export default function TodoCreateNew({ todoCount }: { todoCount: number }) {
   const initialState = { message: "" };
@@ -49,6 +50,7 @@ export default function TodoCreateNew({ todoCount }: { todoCount: number }) {
           {t("todo#max_item_error_detailed")}
         </p>
       )}
+      <AiCompletion />
     </form>
   );
 }

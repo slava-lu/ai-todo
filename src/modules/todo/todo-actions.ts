@@ -4,6 +4,9 @@ import { getTranslations } from "next-intl/server";
 import { maxTodoItems } from "@/lib/consts";
 import sql from "@/lib/db";
 import { revalidatePath } from "next/cache";
+import { streamText } from "ai";
+import { openai } from "@ai-sdk/openai";
+import { createStreamableValue } from "ai/rsc";
 
 type State = {
   message?: string;
@@ -71,3 +74,15 @@ export async function addTodo(
   }
   revalidatePath("/");
 }
+
+export const streamTextAction = async (prompt: string) => {
+  const result = await streamText({
+    model: openai("gpt-4o"),
+    temperature: 0,
+    maxTokens: 250,
+    system:
+      "You are a helpful assistant. In the prompt you will receive the goal that a person tries to achieve. Please create 3-5 sentences with instructions how best to achieve this goal.",
+    prompt: prompt,
+  });
+  return createStreamableValue(result.textStream).value;
+};

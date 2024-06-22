@@ -7,7 +7,7 @@ export default function ChangeStatusButton({ status }: { status: number }) {
   const t = useTranslations();
   const { pending } = useFormStatus();
   return (
-    <Button disabled={pending} variant="default" className="w-32 mt-6">
+    <Button disabled={pending} variant="default" className="w-32">
       {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
       {status === 1 ? t("todo#undo_action") : t("todo#do_action")}
     </Button>
