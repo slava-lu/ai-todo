@@ -22,5 +22,6 @@
   "todo#todo_status_new": "Neu",
   "todo#todo_status_done": "Abgeschlossen",
   "todo#max_item_error": "Maximale Anzahl von Artikeln ist überschritten",
-  "todo#max_item_error_detailed": "Die maximale Anzahl von Artikeln ist überschritten. Bitte löschen Sie einige Einträge, um neue Einträge hinzufügen zu können."
+  "todo#max_item_error_detailed": "Die maximale Anzahl von Artikeln ist überschritten. Bitte löschen Sie einige Einträge, um neue Einträge hinzufügen zu können.",
+  "todo#ai_recommendation_title": "Nachdem Sie einen neuen Artikel hinzugefügt haben, wird die KI die untenstehenden Anweisungen zur Hilfe generieren"
 }

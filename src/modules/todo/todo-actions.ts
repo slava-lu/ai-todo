@@ -1,7 +1,7 @@
 "use server";
 
 import { getTranslations } from "next-intl/server";
-import { maxTodoItems } from "@/lib/consts";
+import { maxTodoItems, aiSystemMessage } from "@/lib/consts";
 import sql from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { streamText } from "ai";
@@ -75,13 +75,32 @@ export async function addTodo(
   revalidatePath("/");
 }
 
+export async function updateTodoAiRec(text: string) {
+  const t = await getTranslations();
+  try {
+    const result = await sql`
+    select max(id) as max_id from task_list`;
+    const id = result[0].max_id;
+    console.log("id", id);
+    console.log("text", text);
+    await sql`
+      update task_list
+      set ai_rec = ${text}
+      where id = ${id}`;
+  } catch {
+    return {
+      message: t("general#database_error"),
+    };
+  }
+  revalidatePath("/");
+}
+
 export const streamTextAction = async (prompt: string) => {
   const result = await streamText({
     model: openai("gpt-4o"),
     temperature: 0,
     maxTokens: 250,
-    system:
-      "You are a helpful assistant. In the prompt you will receive the goal that a person tries to achieve. Please create 3-5 sentences with instructions how best to achieve this goal.",
+    system: aiSystemMessage,
     prompt: prompt,
   });
   return createStreamableValue(result.textStream).value;

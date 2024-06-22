@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useDebouncedCallback } from "use-debounce";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
@@ -22,8 +21,7 @@ export default function SearchBar() {
   }, 300);
 
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Label htmlFor="search">{t("todo#search_label")}</Label>
+    <div className="grid w-full max-w-sm items-center gap-1.5 mb-4">
       <Input
         defaultValue={searchParams.get("query") || ""}
         onChange={(e) => {

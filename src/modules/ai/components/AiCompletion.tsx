@@ -1,27 +1,32 @@
 "use client";
 
-import { streamTextAction } from "@/modules/todo/todo-actions";
+import { streamTextAction, updateTodoAiRec } from "@/modules/todo/todo-actions";
 import { useState, useEffect } from "react";
 import { readStreamableValue } from "ai/rsc";
 import { useFormStatus } from "react-dom";
+import { useTranslations } from "next-intl";
 
 export default function AiCompletion() {
-  const [text, setText] = useState("");
+  const [completion, setCompletion] = useState("");
   const { pending, data } = useFormStatus();
-  useEffect(() => {
-    console.log("data", data?.get("description"));
-    console.log("pending", pending);
 
+  const t = useTranslations();
+  useEffect(() => {
     const generateCompletion = async (prompt: string) => {
       const result = await streamTextAction(prompt);
-      for await (const text of readStreamableValue(result)) setText(text ?? "");
+      let text: string | undefined;
+      for await (text of readStreamableValue(result)) {
+        setCompletion(text ?? "");
+      }
+      await updateTodoAiRec(text ?? "");
     };
     pending && data && generateCompletion(data?.get("description") as string);
   }, [pending]);
 
   return (
-    <div>
-      <div>Ai answers: {text}</div>
+    <div className="mt-10">
+      <div className="mb-6">{t("todo#ai_recommendation_title")}</div>
+      <div>{completion}</div>
     </div>
   );
 }
