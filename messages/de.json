@@ -12,6 +12,7 @@
   "todo#search_placeholder": "suche",
   "todo#cat_table_header": "Kategorie",
   "todo#description_table_header": "Beschreibung",
+  "todo#ai_completion_table_header": "AI-Empfehlung",
   "todo#status_table_header": "Zustand",
   "todo#title_placeholder": "titel",
   "todo#description_placeholder": "beschreibung",
