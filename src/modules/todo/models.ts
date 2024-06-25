@@ -4,4 +4,5 @@ export type Todo = {
   description: string;
   status: number;
   created: string;
+  ai_rec: string;
 };

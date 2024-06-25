@@ -17,7 +17,7 @@ export default async function TodoDetail({
       <div className="flex flex-col">
         <div className="flex mb-6">
           <div className="font-semibold mr-6">
-            {t("todo#title_table_header")}:
+            {t("todo#cat_table_header")}:
           </div>
           <div>{todo.title}</div>
         </div>

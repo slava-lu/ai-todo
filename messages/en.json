@@ -10,7 +10,7 @@
   "todo#add_new_item_action": "Add new",
   "todo#search_label": "Search",
   "todo#search_placeholder": "search",
-  "todo#title_table_header": "Title",
+  "todo#cat_table_header": "Category",
   "todo#description_table_header": "Description",
   "todo#status_table_header": "Status",
   "todo#title_placeholder": "title",

@@ -19,7 +19,7 @@ export default function TodoCreateNew({ todoCount }: { todoCount: number }) {
     <form action={dispatch}>
       <div className="mt-14 flex">
         <div className="grid w-full max-w-sm items-center gap-1.5 mr-6">
-          <Label htmlFor="title">{t("todo#title_table_header")}</Label>
+          <Label htmlFor="title">{t("todo#cat_table_header")}</Label>
           <Input
             type="text"
             id="title"
