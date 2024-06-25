@@ -61,9 +61,11 @@ export default async function TodoList({ query }: { query: string }) {
                 </TableRow>
                 <TableRow>
                   <TableCell colSpan={4}>
-                    <div className="opacity-60 mb-6 italic overflow-hidden text-ellipsis max-w-full line-clamp-2">
-                      {todo.ai_rec}
-                    </div>
+                    <Link href={`/todo/${todo.id}`}>
+                      <div className="opacity-60 mb-6 italic overflow-hidden text-ellipsis max-w-full line-clamp-2">
+                        {todo.ai_rec}
+                      </div>
+                    </Link>
                   </TableCell>
                 </TableRow>
               </>
