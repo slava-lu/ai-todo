@@ -1,12 +1,25 @@
 const Footer = () => {
   return (
-    <footer style={{ position: "sticky", bottom: 0, marginTop: "auto" }}>
-      <div className="mb-2">
-        <a href="mailto:example@example.com" className="hover:underline">
-          example@example.com
+    <footer
+      style={{
+        position: "sticky",
+        bottom: 0,
+        marginTop: "40px",
+        zIndex: 10,
+        padding: "12px",
+        backgroundColor: "rgb(229 231 235)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
+      <div className="mr-4">
+        <a href="mailto:slavalu74@gmail.com" className="hover:underline">
+          E-mail
         </a>
       </div>
-      <div className="mb-2">
+      <div className="mr-4">
         <a
           href="https://github.com/your-github"
           className="hover:underline"
@@ -16,9 +29,7 @@ const Footer = () => {
           GitHub
         </a>
       </div>
-      <div>
-        &copy; {new Date().getFullYear()} Your Company. All rights reserved.
-      </div>
+      <div>&copy; {new Date().getFullYear()} All rights reserved</div>
     </footer>
   );
 };

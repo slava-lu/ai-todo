@@ -44,12 +44,7 @@ export default async function TodoList({ query }: { query: string }) {
                     {todo.category}
                   </TableCell>
                   <TableCell className={opacityLevel}>
-                    <Link
-                      href={`/todo/${todo.id}`}
-                      className="border-b border-black border-opacity-50"
-                    >
-                      {todo.description}
-                    </Link>
+                    <Link href={`/todo/${todo.id}`}>{todo.description}</Link>
                   </TableCell>
                   <TableCell className={opacityLevel}>
                     {format(new Date(todo.created), "dd-MM-yy HH:mm")}
