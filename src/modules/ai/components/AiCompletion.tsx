@@ -1,5 +1,6 @@
 "use client";
 
+import ReactMarkdown from "react-markdown";
 import { streamTextAction, updateTodoAiRec } from "@/modules/todo/todo-actions";
 import { useState, useEffect } from "react";
 import { readStreamableValue } from "ai/rsc";
@@ -25,8 +26,12 @@ export default function AiCompletion() {
 
   return (
     <div className="mt-10">
-      <div className="mb-6">{t("todo#ai_recommendation_title")}</div>
-      <div>{completion}</div>
+      {!completion && (
+        <div className="mb-6 italic">{t("todo#ai_recommendation_title")}</div>
+      )}
+      <div>
+        <ReactMarkdown>{completion}</ReactMarkdown>
+      </div>
     </div>
   );
 }

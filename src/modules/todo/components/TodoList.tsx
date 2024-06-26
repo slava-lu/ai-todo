@@ -40,7 +40,9 @@ export default async function TodoList({ query }: { query: string }) {
                   <TableCell className={cn("w-0.5 ", opacityLevel)}>
                     {todo.id}
                   </TableCell>
-                  <TableCell className={opacityLevel}>{todo.title}</TableCell>
+                  <TableCell className={opacityLevel}>
+                    {todo.category}
+                  </TableCell>
                   <TableCell className={opacityLevel}>
                     <Link
                       href={`/todo/${todo.id}`}

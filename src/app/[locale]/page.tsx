@@ -13,13 +13,13 @@ export default async function Home({
   const [{ count: todoCount }] = await fetchTodoCount();
   const query = searchParams?.query || "";
   return (
-    <main className="min-h-screen container">
+    <div className="container">
       <h3 className="text-2xl font-semibold text-center my-4">
         {t("todo#list_title")}
       </h3>
       <SearchBar />
       <TodoList query={query} />
       <TodoCreateNew todoCount={todoCount} />
-    </main>
+    </div>
   );
 }

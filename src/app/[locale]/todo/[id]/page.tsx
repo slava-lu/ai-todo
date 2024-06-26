@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import ReactMarkdown from "react-markdown";
 import { fetchTodosById } from "@/modules/todo/todo-data";
 import { format } from "date-fns";
 import BackButton from "@/components/ui/custom/backButton";
@@ -12,7 +13,7 @@ export default async function TodoDetail({
   const [todo] = await fetchTodosById(params.id);
 
   return (
-    <main className="min-h-screen container">
+    <div className="container">
       <div className="flex items-center mb-20 mt-8">
         <BackButton />
         <h4 className="text-xl font-semibold text-center justify-self-center flex-grow">
@@ -24,7 +25,7 @@ export default async function TodoDetail({
           <div className="font-semibold mr-6 w-24">
             {t("todo#cat_table_header")}:
           </div>
-          <div>{todo.title}</div>
+          <div>{todo.category}</div>
         </div>
         <div className="flex mb-6">
           <div className="font-semibold mr-6 w-24">
@@ -53,9 +54,11 @@ export default async function TodoDetail({
           <div className="font-semibold mr-6 w-24 shrink-0">
             {t("todo#ai_completion_table_header")}:
           </div>
-          <div>{todo.ai_rec}</div>
+          <div>
+            <ReactMarkdown>{todo.ai_rec}</ReactMarkdown>
+          </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

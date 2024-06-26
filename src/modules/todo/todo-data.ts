@@ -6,7 +6,7 @@ export async function fetchAllTodos(query: string) {
     return sql<Todo[]>`select *
                      from task_list
                      where 
-                       title ILIKE ${`%${query}%`} OR
+                       category ILIKE ${`%${query}%`} OR
                        description ILIKE ${`%${query}%`}
                        order by id`;
   } catch (error) {

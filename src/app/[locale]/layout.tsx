@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Inter as FontSans } from "next/font/google";
 import TopHeader from "@/modules/layouts/TopHeader";
+import Footer from "@/modules/layouts/Footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -26,14 +27,14 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-        )}
+        className={cn("bg-background font-sans antialiased", fontSans.variable)}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <TopHeader />
-          {children}
+          <div className="min-h-screen flex flex-col flex-grow">
+            <TopHeader />
+            {children}
+            <Footer />
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>

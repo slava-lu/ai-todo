@@ -1,7 +1,7 @@
 "use server";
 
 import { getTranslations } from "next-intl/server";
-import { maxTodoItems, aiSystemMessage } from "@/lib/consts";
+import { maxTodoItems, aiSystemMessage, maxTokens } from "@/lib/consts";
 import sql from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { streamText } from "ai";
@@ -49,10 +49,10 @@ export async function addTodo(
   prevState: State | undefined,
   formData: FormData,
 ) {
-  const title = formData.get("title")?.toString();
+  const category = formData.get("category")?.toString();
   const description = formData.get("description")?.toString();
   const t = await getTranslations();
-  if (!title || !description) {
+  if (!category || !description) {
     return { message: t("todo#missing_field_error") };
   }
   const [{ count }] = await sql`SELECT COUNT(id) from task_list`;
@@ -64,9 +64,9 @@ export async function addTodo(
   try {
     await sql`
     insert into task_list
-       (title, description, status)
+       (category, description, status)
     values 
-    (${title}, ${description}, 0)`;
+    (${category}, ${description}, 0)`;
   } catch {
     return {
       message: t("general#database_error"),
@@ -81,8 +81,6 @@ export async function updateTodoAiRec(text: string) {
     const result = await sql`
     select max(id) as max_id from task_list`;
     const id = result[0].max_id;
-    console.log("id", id);
-    console.log("text", text);
     await sql`
       update task_list
       set ai_rec = ${text}
@@ -99,7 +97,7 @@ export const streamTextAction = async (prompt: string) => {
   const result = await streamText({
     model: openai("gpt-4o"),
     temperature: 0,
-    maxTokens: 250,
+    maxTokens: maxTokens,
     system: aiSystemMessage,
     prompt: prompt,
   });
