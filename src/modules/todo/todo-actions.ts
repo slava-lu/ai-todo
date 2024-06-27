@@ -67,7 +67,6 @@ export async function addTodo(
        (category, description, status)
     values 
     (${category}, ${description}, 0)`;
-    console.log("todo created");
   } catch {
     return {
       message: t("general#database_error"),

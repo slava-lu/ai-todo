@@ -23,8 +23,6 @@ export default function LocaleSwitcher() {
 
   const handleChange = (event: string) => {
     startTransition(() => {
-      console.log("event", event);
-      console.log("pathname", pathname);
       replace(`/${event}/${pathname}?${params.toString()}`);
     });
   };
