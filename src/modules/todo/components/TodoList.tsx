@@ -56,7 +56,9 @@ export default async function TodoList({ query }: { query: string }) {
                   >
                     {todo.category}
                   </TableCell>
-                  <TableCell className={cn("text-base", opacityLevel)}>
+                  <TableCell
+                    className={cn("w-60 md:w-auto text-base", opacityLevel)}
+                  >
                     <Link href={`/todo/${todo.id}`}>{todo.description}</Link>
                   </TableCell>
                   <TableCell
@@ -64,7 +66,7 @@ export default async function TodoList({ query }: { query: string }) {
                   >
                     {format(new Date(todo.created), "dd-MM-yy HH:mm")}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="w-10">
                     <TodoStatus id={todo.id} status={todo.status} />
                   </TableCell>
                   <TableCell>
