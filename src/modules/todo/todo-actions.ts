@@ -53,8 +53,6 @@ export async function addTodo(
   const description = formData.get("description")?.toString();
   const t = await getTranslations();
 
-  console.log("category", category);
-
   if (!description) {
     return { message: t("todo#missing_field_error") };
   }
