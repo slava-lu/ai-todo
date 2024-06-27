@@ -56,7 +56,7 @@ export default async function TodoList({ query }: { query: string }) {
                   >
                     {todo.category}
                   </TableCell>
-                  <TableCell className={cn(opacityLevel)}>
+                  <TableCell className={cn("text-base", opacityLevel)}>
                     <Link href={`/todo/${todo.id}`}>{todo.description}</Link>
                   </TableCell>
                   <TableCell
