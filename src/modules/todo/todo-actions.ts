@@ -49,10 +49,13 @@ export async function addTodo(
   prevState: State | undefined,
   formData: FormData,
 ) {
-  const category = formData.get("category")?.toString();
+  const category = formData.get("category")?.toString() || "Default";
   const description = formData.get("description")?.toString();
   const t = await getTranslations();
-  if (!category || !description) {
+
+  console.log("category", category);
+
+  if (!description) {
     return { message: t("todo#missing_field_error") };
   }
   const [{ count }] = await sql`SELECT COUNT(id) from task_list`;

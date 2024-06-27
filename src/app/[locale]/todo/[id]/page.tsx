@@ -54,7 +54,7 @@ export default async function TodoDetail({
           <div className="font-semibold mr-6 w-24 shrink-0">
             {t("todo#ai_completion_table_header")}:
           </div>
-          <div>
+          <div className="mb-20">
             <ReactMarkdown>{todo.ai_rec}</ReactMarkdown>
           </div>
         </div>

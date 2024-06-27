@@ -23,7 +23,7 @@ export default async function TodoList({ query }: { query: string }) {
     <>
       <Table>
         <TableHeader>
-          <TableRow>
+          <TableRow className="hidden md:table-row">
             <TableHead>id</TableHead>
             <TableHead>{t("todo#cat_table_header")}</TableHead>
             <TableHead>{t("todo#description_table_header")}</TableHead>
@@ -38,16 +38,22 @@ export default async function TodoList({ query }: { query: string }) {
             return (
               <Fragment key={todo.id}>
                 <TableRow>
-                  <TableCell className={cn("w-0.5 ", opacityLevel)}>
+                  <TableCell
+                    className={cn("w-0.5 hidden md:table-cell", opacityLevel)}
+                  >
                     {todo.id}
                   </TableCell>
-                  <TableCell className={opacityLevel}>
+                  <TableCell
+                    className={cn("hidden md:table-cell", opacityLevel)}
+                  >
                     {todo.category}
                   </TableCell>
-                  <TableCell className={opacityLevel}>
+                  <TableCell className={cn(opacityLevel)}>
                     <Link href={`/todo/${todo.id}`}>{todo.description}</Link>
                   </TableCell>
-                  <TableCell className={opacityLevel}>
+                  <TableCell
+                    className={cn("hidden md:table-cell", opacityLevel)}
+                  >
                     {format(new Date(todo.created), "dd-MM-yy HH:mm")}
                   </TableCell>
                   <TableCell>

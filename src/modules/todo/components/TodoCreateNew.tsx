@@ -17,8 +17,8 @@ export default function TodoCreateNew({ todoCount }: { todoCount: number }) {
 
   return (
     <form action={dispatch}>
-      <div className="mt-14 flex">
-        <div className="grid w-full max-w-64 items-center gap-1.5 mr-6">
+      <div className="mt-14 flex flex-col md:flex-row">
+        <div className="max-w-64 items-center mr-6 hidden md:block">
           <Label htmlFor="category">{t("todo#cat_table_header")}</Label>
           <Input
             type="text"
@@ -27,7 +27,7 @@ export default function TodoCreateNew({ todoCount }: { todoCount: number }) {
             placeholder={t("todo#category_placeholder")}
           />
         </div>
-        <div className="grid w-full max-w-xl items-center gap-1.5">
+        <div className="max-w-96 items-center">
           <Label htmlFor="description">
             {t("todo#description_table_header")}
           </Label>

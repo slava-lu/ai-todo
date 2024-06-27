@@ -21,7 +21,7 @@ export default function SearchBar() {
   }, 300);
 
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5 mb-4">
+    <div className="w-[350px]  mr-1">
       <Input
         defaultValue={searchParams.get("query") || ""}
         onChange={(e) => {
@@ -30,6 +30,7 @@ export default function SearchBar() {
         type="text"
         id="search"
         placeholder={t("todo#search_placeholder")}
+        style={{ minWidth: "180px" }}
       />
     </div>
   );

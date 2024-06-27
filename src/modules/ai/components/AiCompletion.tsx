@@ -22,7 +22,7 @@ export default function AiCompletion() {
       }
       await updateTodoAiRec(text ?? "");
     };
-    const isFormValid = data?.get("description") && data?.get("category");
+    const isFormValid = data?.get("description");
     pending &&
       isFormValid &&
       generateCompletion(data?.get("description") as string);
@@ -39,7 +39,7 @@ export default function AiCompletion() {
       {!completion && (
         <div className="mb-6 italic">{t("todo#ai_recommendation_title")}</div>
       )}
-      <div ref={messagesEndRef}>
+      <div ref={messagesEndRef} className="mb-20">
         <ReactMarkdown>{completion}</ReactMarkdown>
       </div>
     </div>

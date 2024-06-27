@@ -2,9 +2,8 @@ const Footer = () => {
   return (
     <footer
       style={{
-        position: "sticky",
+        position: "fixed",
         bottom: 0,
-        marginTop: "40px",
         zIndex: 10,
         padding: "12px",
         backgroundColor: "rgb(229 231 235)",
