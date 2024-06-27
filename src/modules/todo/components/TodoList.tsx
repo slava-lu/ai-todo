@@ -13,6 +13,7 @@ import TodoStatus from "@/modules/todo/components/TodoStatus";
 import TodoDelete from "@/modules/todo/components/TodoDelete";
 import { fetchAllTodos } from "@/modules/todo/todo-data";
 import { cn } from "@/lib/utils";
+import { Fragment } from "react";
 
 export default async function TodoList({ query }: { query: string }) {
   const t = await getTranslations();
@@ -35,8 +36,8 @@ export default async function TodoList({ query }: { query: string }) {
             const opacityLevel =
               todo.status === 0 ? "opacity-100" : "opacity-40";
             return (
-              <>
-                <TableRow key={todo.id}>
+              <Fragment key={todo.id}>
+                <TableRow>
                   <TableCell className={cn("w-0.5 ", opacityLevel)}>
                     {todo.id}
                   </TableCell>
@@ -65,7 +66,7 @@ export default async function TodoList({ query }: { query: string }) {
                     </Link>
                   </TableCell>
                 </TableRow>
-              </>
+              </Fragment>
             );
           })}
         </TableBody>

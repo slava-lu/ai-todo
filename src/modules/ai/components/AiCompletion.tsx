@@ -22,7 +22,10 @@ export default function AiCompletion() {
       }
       await updateTodoAiRec(text ?? "");
     };
-    pending && data && generateCompletion(data?.get("description") as string);
+    const isFormValid = data?.get("description") && data?.get("category");
+    pending &&
+      isFormValid &&
+      generateCompletion(data?.get("description") as string);
   }, [pending]);
 
   useEffect(() => {

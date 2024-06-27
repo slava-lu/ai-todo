@@ -14,6 +14,7 @@ export default function TodoCreateNew({ todoCount }: { todoCount: number }) {
   const t = useTranslations();
   const [state, dispatch] = useFormState(addTodo, initialState);
   const isDisabled = todoCount >= maxTodoItems;
+  console.log("state", state);
 
   return (
     <form action={dispatch}>
