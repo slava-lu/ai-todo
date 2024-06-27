@@ -29,7 +29,7 @@ export default async function TodoList({ query }: { query: string }) {
               {t("todo#cat_table_header")}
             </TableHead>
             <TableHead className="font-bold">
-              {t("todo#description_table_header")}
+              {t("todo#description_table_header_raw")}
             </TableHead>
             <TableHead className="font-bold">
               {t("todo#created_table_header")}

@@ -12,6 +12,7 @@
   "todo#search_placeholder": "search",
   "todo#cat_table_header": "Category",
   "todo#description_table_header": "Description (required)",
+  "todo#description_table_header_raw": "Description",
   "todo#ai_completion_table_header": "AI Advice",
   "todo#status_table_header": "Status",
   "todo#category_placeholder": "Default",
