@@ -33,6 +33,7 @@ export default function TodoCreateNew({ todoCount }: { todoCount: number }) {
           </Label>
           <Input
             type="text"
+            required
             id="description"
             name="description"
             placeholder={t("todo#description_placeholder")}

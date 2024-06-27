@@ -1,5 +1,5 @@
 export const locales = ["en", "de"];
-export const maxTodoItems = 6;
+export const maxTodoItems = 10;
 export const maxTokens = 500;
 export const aiSystemMessage = `
 You are a helpful assistant. In the prompt you will receive the task or goal that a person tries to achieve. Please create 6-8 sentences with instructions how best to achieve this goal. 

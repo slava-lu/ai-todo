@@ -23,12 +23,20 @@ export default async function TodoList({ query }: { query: string }) {
     <>
       <Table>
         <TableHeader>
-          <TableRow className="hidden md:table-row">
-            <TableHead>id</TableHead>
-            <TableHead>{t("todo#cat_table_header")}</TableHead>
-            <TableHead>{t("todo#description_table_header")}</TableHead>
-            <TableHead>{t("todo#created_table_header")}</TableHead>
-            <TableHead>{t("todo#action_table_header")}</TableHead>
+          <TableRow className="hidden md:table-row font-bold">
+            <TableHead className="font-bold">id</TableHead>
+            <TableHead className="font-bold">
+              {t("todo#cat_table_header")}
+            </TableHead>
+            <TableHead className="font-bold">
+              {t("todo#description_table_header")}
+            </TableHead>
+            <TableHead className="font-bold">
+              {t("todo#created_table_header")}
+            </TableHead>
+            <TableHead colSpan={2} className="font-bold text-center">
+              {t("todo#action_table_header")}
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
