@@ -21,7 +21,7 @@ export default function SearchBar() {
   }, 300);
 
   return (
-    <div className="w-[350px]  mr-1">
+    <div className="mr-2 md:mr-4">
       <Input
         defaultValue={searchParams.get("search") || ""}
         onChange={(e) => {
@@ -30,7 +30,7 @@ export default function SearchBar() {
         type="text"
         id="search"
         placeholder={t("todo#search_placeholder")}
-        style={{ minWidth: "180px" }}
+        style={{ minWidth: "80px" }}
       />
     </div>
   );

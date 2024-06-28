@@ -8,8 +8,10 @@ export default async function TopHeader() {
   return (
     <div className="sticky top-0 p-4 bg-gray-100 z-10">
       <div className="container flex  items-center justify-between">
-        <SearchBar />
-        <FilterDone />
+        <div className="flex items-center">
+          <SearchBar />
+          <FilterDone />
+        </div>
         <h3 className="hidden md:block  md:text-lg lg:text-2xl font-semibold w-[30%]">
           {t("todo#list_title")}
         </h3>

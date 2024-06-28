@@ -20,8 +20,9 @@ export default function FilterDone() {
   };
 
   return (
-    <div>
-      <Checkbox onCheckedChange={handleCheck} />
+    <div className="flex items-center mr-2">
+      <Checkbox className="mr-2" onCheckedChange={handleCheck} />
+      <div className="text-sm text-nowrap ">Filter done</div>
     </div>
   );
 }

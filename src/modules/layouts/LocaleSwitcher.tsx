@@ -28,13 +28,13 @@ export default function LocaleSwitcher() {
   };
 
   return (
-    <div className="mr-4">
+    <div className="mr-1">
       <Select
         defaultValue={locale}
         onValueChange={handleChange}
         disabled={isPending}
       >
-        <SelectTrigger className="w-[140px]">
+        <SelectTrigger className="w-[60px] md:w-[70px]">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
