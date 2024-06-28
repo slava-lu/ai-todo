@@ -21,7 +21,11 @@ export default function FilterDone() {
 
   return (
     <div className="flex items-center mr-2">
-      <Checkbox className="mr-2" onCheckedChange={handleCheck} />
+      <Checkbox
+        className="mr-2"
+        checked={Boolean(searchParams.get("filter"))}
+        onCheckedChange={handleCheck}
+      />
       <div className="text-sm text-nowrap ">Filter done</div>
     </div>
   );
