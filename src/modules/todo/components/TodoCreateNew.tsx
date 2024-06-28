@@ -4,6 +4,7 @@ import { useFormState } from "react-dom";
 import { useTranslations } from "next-intl";
 import { addTodo } from "@/modules/todo/todo-actions";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import CreateNewButton from "./CreateNewButton";
 import { maxTodoItems } from "@/lib/consts";
@@ -17,9 +18,11 @@ export default function TodoCreateNew({ todoCount }: { todoCount: number }) {
 
   return (
     <form action={dispatch}>
-      <div className="mt-14 flex flex-col md:flex-row">
-        <div className="max-w-64 items-center mr-6 hidden md:block">
-          <Label htmlFor="category">{t("todo#cat_table_header")}</Label>
+      <div className="mt-6 flex flex-col md:flex-row">
+        <div className="max-w-64 items-start mr-6 hidden md:flex md:flex-col">
+          <Label htmlFor="category" className="mb-1">
+            {t("todo#cat_table_header")}
+          </Label>
           <Input
             type="text"
             id="category"
@@ -27,13 +30,22 @@ export default function TodoCreateNew({ todoCount }: { todoCount: number }) {
             placeholder={t("todo#category_placeholder")}
           />
         </div>
-        <div className="max-w-96 items-center">
-          <Label htmlFor="description">
+        <div className="items-start flex min-w-0 flex-1 flex-col">
+          <Label htmlFor="description" className="mb-1">
             {t("todo#description_table_header")}
           </Label>
-          <Input
-            type="text"
+          <Textarea
+            className="hidden md:block "
             required
+            rows={1}
+            id="description"
+            name="description"
+            placeholder={t("todo#description_placeholder")}
+          />
+          <Textarea
+            className="block md:hidden"
+            required
+            rows={2}
             id="description"
             name="description"
             placeholder={t("todo#description_placeholder")}

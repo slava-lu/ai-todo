@@ -32,7 +32,7 @@ export default async function TodoList({
           <TableRow className="hidden md:table-row font-bold">
             <TableHead className="font-bold">id</TableHead>
             <TableHead className="font-bold">
-              {t("todo#cat_table_header")}
+              {t("todo#cat_table_header_raw")}
             </TableHead>
             <TableHead className="font-bold">
               {t("todo#description_table_header_raw")}
