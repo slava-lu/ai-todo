@@ -13,9 +13,9 @@ export default function SearchBar() {
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
     if (term) {
-      params.set("query", term);
+      params.set("search", term);
     } else {
-      params.delete("query");
+      params.delete("search");
     }
     replace(`${pathname}?${params.toString()}`);
   }, 300);
@@ -23,7 +23,7 @@ export default function SearchBar() {
   return (
     <div className="w-[350px]  mr-1">
       <Input
-        defaultValue={searchParams.get("query") || ""}
+        defaultValue={searchParams.get("search") || ""}
         onChange={(e) => {
           handleSearch(e.target.value);
         }}

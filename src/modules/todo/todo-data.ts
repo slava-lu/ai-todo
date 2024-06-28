@@ -1,13 +1,18 @@
 import sql from "@/lib/db";
 import { Todo } from "@/modules/todo/models";
 
-export async function fetchAllTodos(query: string) {
+export async function fetchAllTodos(query: {
+  search?: string;
+  filter?: string;
+}) {
   try {
+    const { search = "", filter } = query;
     return sql<Todo[]>`select *
                      from task_list
                      where 
-                       category ILIKE ${`%${query}%`} OR
-                       description ILIKE ${`%${query}%`}
+                       (category ILIKE ${`%${search}%`} OR
+                       description ILIKE ${`%${search}%`})
+                       ${filter ? sql`AND status = 0` : sql``} 
                        order by id`;
   } catch (error) {
     console.error("Database Error:", error);

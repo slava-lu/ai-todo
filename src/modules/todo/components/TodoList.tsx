@@ -15,10 +15,16 @@ import { fetchAllTodos } from "@/modules/todo/todo-data";
 import { cn } from "@/lib/utils";
 import { Fragment } from "react";
 
-export default async function TodoList({ query }: { query: string }) {
+export default async function TodoList({
+  query,
+}: {
+  query: {
+    search?: string;
+    filter?: string;
+  };
+}) {
   const t = await getTranslations();
   const todos = await fetchAllTodos(query);
-
   return (
     <>
       <Table>

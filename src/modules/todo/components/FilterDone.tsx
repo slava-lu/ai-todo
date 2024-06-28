@@ -1,0 +1,27 @@
+"use client";
+
+import { Checkbox } from "@/components/ui/checkbox";
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+export default function FilterDone() {
+  const t = useTranslations();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+  const searchParams = useSearchParams();
+  const handleCheck = (value: boolean) => {
+    const params = new URLSearchParams(searchParams);
+    if (value) {
+      params.set("filter", String(value));
+    } else {
+      params.delete("filter");
+    }
+    replace(`${pathname}?${params.toString()}`);
+  };
+
+  return (
+    <div>
+      <Checkbox onCheckedChange={handleCheck} />
+    </div>
+  );
+}

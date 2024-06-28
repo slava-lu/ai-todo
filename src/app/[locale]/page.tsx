@@ -7,13 +7,13 @@ import { fetchTodoCount } from "@/modules/todo/todo-data";
 export default async function Home({
   searchParams,
 }: {
-  searchParams?: { query?: string };
+  searchParams: { search?: string; filter?: string };
 }) {
   const [{ count: todoCount }] = await fetchTodoCount();
-  const query = searchParams?.query || "";
+  const query = searchParams;
   return (
     <div className="container">
-      <TodoList query={query} />
+      <TodoList query={searchParams} />
       <TodoCreateNew todoCount={todoCount} />
     </div>
   );
