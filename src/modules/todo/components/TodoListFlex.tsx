@@ -45,7 +45,7 @@ export default async function TodoListFlex({
                 <TodoDelete id={todo.id} />
               </div>
             </div>
-            <div className="flex flex-1 items-center mr-[150px] md:mr-[220px]mb-6 ">
+            <div className="flex flex-1 items-center mr-[150px] md:mr-[220px] mb-6 ">
               <Link href={`/todo/${todo.id}`}>
                 <div className="opacity-60 italic text-ellipsis  line-clamp-2">
                   {todo.ai_rec}
